@@ -1,7 +1,8 @@
 """
 motor.py
 Motor de decisión de AURA.
-Implementa las reglas obligatorias (R01-R07) y deseables (D01-D08).
+Implementa las reglas obligatorias (R01-R07) y deseables (D01-D08) respetando
+estrictamente los tiempos de 05_zonas_y_tiempos.xlsx y PredictorETA.
 """
 
 import pandas as pd
@@ -142,7 +143,8 @@ def _evaluar_candidatas(sol, flota, ahora, ts0, mundo, predictor, solo_ambulanci
         else:
             continue
 
-        eta_viaje = predictor.predecir(m["zona"], zona_dest, tipo, clase, ts_actual)
+        # D01: ETA oficial basado en 05_zonas_y_tiempos.xlsx (matriz_tiempos * factor_trafico) + ML
+        eta_viaje = float(predictor.predecir(m["zona"], zona_dest, tipo, clase, ts_actual))
         eta_total = demora_liberacion + eta_viaje
         dist_km = mundo.km(m["zona"], zona_dest)
         costo = _costo_servicio(m, dist_km, eta_viaje)

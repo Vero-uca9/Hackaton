@@ -56,54 +56,63 @@ TRIAJE_CATALOGO = {
 }
 
 CANALES = ["TELEFONO", "APP", "WHATSAPP"]
+MUNICIPIOS = [
+    "Medellín", "Envigado", "Bello", "Itagüí", "Sabaneta",
+    "La Estrella", "Caldas", "Copacabana", "Girardota", "Barbosa"
+]
+TIPOS_VIA = ["Carrera", "Calle", "Avenida", "Circular", "Diagonal", "Transversal"]
+LETRAS_VIA = [""] + [chr(c) for c in range(ord("A"), ord("Z") + 1)] + ["AA", "BB", "CC", "DD"]
+LETRAS_BIS = [""] + [chr(c) for c in range(ord("A"), ord("H") + 1)]
+CUADRANTES = ["Ninguno", "Sur", "Norte", "Este", "Oeste"]
 SUBIR_NIVEL = {"06": "03", "03": "07", "07": "02", "02": "01", "01": "01"}
 
-PALABRAS_ZONA = [
-    ("popular", "Z-MED-01"),
-    ("santo domingo", "Z-MED-01"),
-    ("santa cruz", "Z-MED-02"),
-    ("manrique", "Z-MED-03"),
-    ("campo valdes", "Z-MED-04"),
-    ("aranjuez", "Z-MED-04"),
-    ("moravia", "Z-MED-04"),
-    ("castilla", "Z-MED-05"),
-    ("doce de octubre", "Z-MED-06"),
-    ("12 de octubre", "Z-MED-06"),
-    ("robledo", "Z-MED-07"),
-    ("pajarito", "Z-MED-07"),
-    ("villa hermosa", "Z-MED-08"),
-    ("enciso", "Z-MED-08"),
-    ("buenos aires", "Z-MED-09"),
-    ("milagrosa", "Z-MED-09"),
-    ("candelaria", "Z-MED-10"),
-    ("centro", "Z-MED-10"),
-    ("prado", "Z-MED-10"),
-    ("laureles", "Z-MED-11"),
-    ("estadio", "Z-MED-11"),
-    ("conquistadores", "Z-MED-11"),
-    ("america", "Z-MED-12"),
-    ("floresta", "Z-MED-12"),
-    ("calasanz", "Z-MED-12"),
-    ("san javier", "Z-MED-13"),
-    ("poblado", "Z-MED-14"),
-    ("provenza", "Z-MED-14"),
-    ("castropol", "Z-MED-14"),
-    ("patriarca", "Z-MED-14"),
-    ("guayabal", "Z-MED-15"),
-    ("cristo rey", "Z-MED-15"),
-    ("belen", "Z-MED-16"),
-    ("rosales", "Z-MED-16"),
-    ("fatima", "Z-MED-16"),
-    ("bello", "Z-BEL"),
-    ("niquia", "Z-BEL"),
-    ("envigado", "Z-ENV"),
-    ("itagui", "Z-ITA"),
-    ("sabaneta", "Z-SAB"),
-    ("estrella", "Z-EST"),
-    ("caldas", "Z-CAL"),
-    ("copacabana", "Z-COP"),
-    ("girardota", "Z-GIR"),
-    ("barbosa", "Z-BAR"),
+BARRIOS_A_SECTOR = [
+    ("popular", ["z-med-01", "popular", "comuna 1"]),
+    ("santo domingo", ["z-med-01", "popular", "comuna 1"]),
+    ("santa cruz", ["z-med-02", "santa cruz", "comuna 2"]),
+    ("manrique", ["z-med-03", "manrique", "comuna 3"]),
+    ("campo valdes", ["z-med-04", "aranjuez", "comuna 4"]),
+    ("aranjuez", ["z-med-04", "aranjuez", "comuna 4"]),
+    ("moravia", ["z-med-04", "aranjuez", "comuna 4"]),
+    ("castilla", ["z-med-05", "castilla", "comuna 5"]),
+    ("doce de octubre", ["z-med-06", "doce de octubre", "comuna 6"]),
+    ("12 de octubre", ["z-med-06", "doce de octubre", "comuna 6"]),
+    ("robledo", ["z-med-07", "robledo", "comuna 7"]),
+    ("pajarito", ["z-med-07", "robledo", "comuna 7"]),
+    ("villa hermosa", ["z-med-08", "villa hermosa", "comuna 8"]),
+    ("enciso", ["z-med-08", "villa hermosa", "comuna 8"]),
+    ("buenos aires", ["z-med-09", "buenos aires", "comuna 9"]),
+    ("milagrosa", ["z-med-09", "buenos aires", "comuna 9"]),
+    ("candelaria", ["z-med-10", "candelaria", "centro", "comuna 10"]),
+    ("centro", ["z-med-10", "candelaria", "centro", "comuna 10"]),
+    ("prado", ["z-med-10", "candelaria", "centro", "comuna 10"]),
+    ("laureles", ["z-med-11", "laureles", "estadio", "comuna 11"]),
+    ("estadio", ["z-med-11", "laureles", "estadio", "comuna 11"]),
+    ("conquistadores", ["z-med-11", "laureles", "estadio", "comuna 11"]),
+    ("america", ["z-med-12", "america", "comuna 12"]),
+    ("floresta", ["z-med-12", "america", "comuna 12"]),
+    ("calasanz", ["z-med-12", "america", "comuna 12"]),
+    ("san javier", ["z-med-13", "san javier", "comuna 13"]),
+    ("poblado", ["z-med-14", "poblado", "comuna 14"]),
+    ("provenza", ["z-med-14", "poblado", "comuna 14"]),
+    ("castropol", ["z-med-14", "poblado", "comuna 14"]),
+    ("patriarca", ["z-med-14", "poblado", "comuna 14"]),
+    ("aguacatala", ["z-med-14", "poblado", "comuna 14"]),
+    ("guayabal", ["z-med-15", "guayabal", "comuna 15"]),
+    ("cristo rey", ["z-med-15", "guayabal", "comuna 15"]),
+    ("belen", ["z-med-16", "belen", "comuna 16"]),
+    ("rosales", ["z-med-16", "belen", "comuna 16"]),
+    ("fatima", ["z-med-16", "belen", "comuna 16"]),
+    ("bello", ["z-bel", "bello"]),
+    ("niquia", ["z-bel", "bello"]),
+    ("envigado", ["z-env", "envigado"]),
+    ("itagui", ["z-ita", "itagui"]),
+    ("sabaneta", ["z-sab", "sabaneta"]),
+    ("estrella", ["z-est", "estrella"]),
+    ("caldas", ["z-cal", "caldas"]),
+    ("copacabana", ["z-cop", "copacabana"]),
+    ("girardota", ["z-gir", "girardota"]),
+    ("barbosa", ["z-bar", "barbosa"]),
 ]
 
 
@@ -161,47 +170,91 @@ def evaluar_triaje_automatico(motivo, texto_libre, edad, embarazada):
     return discriminador, mod_texto, codigo
 
 
-def detectar_zona_desde_direccion(direccion, mundo):
-    if not direccion or not direccion.strip():
+def _buscar_zona_por_palabras(palabras_objetivo, mundo, solo_medellin=False):
+    for z_id, z_nombre in sorted(mundo.nombre_zona.items()):
+        if solo_medellin and not str(z_id).upper().startswith("Z-MED"):
+            continue
+        combinado = _normalizar(f"{z_id} {z_nombre}")
+        for p in palabras_objetivo:
+            if p in combinado:
+                return z_id
+    return None
+
+
+def zona_desde_coordenada_vial(municipio, tipo_via, num_via, num_cruce, cuad_via, cuad_cruce, mundo):
+    """Determina la zona exacta a partir del cruce vial (Calle, Carrera, Cuadrante Vía/Cruce y Municipio)."""
+    mun_norm = _normalizar(municipio)
+    if mun_norm != "medellin":
+        return _buscar_zona_por_palabras([mun_norm, mun_norm[:3]], mundo, solo_medellin=False)
+
+    if num_via <= 0 or num_cruce <= 0:
         return None
-    texto = _normalizar(direccion)
-    zonas_disponibles = list(mundo.nombre_zona.keys())
 
-    for z in zonas_disponibles:
-        if _normalizar(z) in texto:
-            return z
+    # Normalizar cuál número es Calle (eje Norte-Sur) y cuál es Carrera (eje Oriente-Occidente)
+    if tipo_via in ("Carrera", "Avenida", "Transversal"):
+        num_cra = num_via
+        num_cll = num_cruce
+        es_sur = (cuad_cruce == "Sur") or (cuad_via == "Sur")
+        es_oeste = (cuad_via == "Oeste") or (cuad_cruce == "Oeste")
+    else:
+        num_cll = num_via
+        num_cra = num_cruce
+        es_sur = (cuad_via == "Sur") or (cuad_cruce == "Sur")
+        es_oeste = (cuad_cruce == "Oeste") or (cuad_via == "Oeste")
 
-    for clave, prefijo in PALABRAS_ZONA:
-        if clave in texto:
-            candidatas = sorted([z for z in zonas_disponibles if z.startswith(prefijo)])
-            if candidatas:
-                return candidatas[0]
-
-    for z, nombre in mundo.nombre_zona.items():
-        nombre_limpio = _normalizar(nombre.split("(")[0])
-        palabras = [p for p in re.split(r"[\s\-]+", nombre_limpio) if len(p) > 3]
-        if any(p in texto for p in palabras):
-            return z
-
-    m_cll = re.search(r"\b(?:cll|cl|calle)\s*(\d+)", texto)
-    m_cra = re.search(r"\b(?:cra|cr|carrera|kr)\s*(\d+)", texto)
-    if m_cll:
-        num_cll = int(m_cll.group(1))
-        num_cra = int(m_cra.group(1)) if m_cra else 50
-        if "sur" in texto or num_cll <= 18:
-            pref = "Z-MED-14" if num_cra < 50 else "Z-MED-15"
-        elif num_cll <= 45:
-            pref = "Z-MED-16" if num_cra >= 65 else ("Z-MED-09" if num_cra < 45 else "Z-MED-10")
-        elif num_cll <= 65:
-            pref = "Z-MED-11" if num_cra >= 65 else ("Z-MED-08" if num_cra < 45 else "Z-MED-10")
-        elif num_cll <= 90:
-            pref = "Z-MED-07" if num_cra >= 65 else "Z-MED-04"
+    # Mapeo espacial detallado de Medellín (estrictamente Z-MED-XX)
+    if es_sur or num_cll <= 18:
+        pistas = ["z-med-14", "poblado"] if (num_cra <= 50 and not es_oeste) else ["z-med-15", "guayabal"]
+    elif num_cll <= 45:
+        if num_cra >= 65 or es_oeste:
+            pistas = ["z-med-16", "belen"]
+        elif num_cra < 44:
+            pistas = ["z-med-09", "buenos aires"]
         else:
-            pref = "Z-MED-05" if num_cra >= 65 else "Z-MED-02"
-        candidatas = sorted([z for z in zonas_disponibles if z.startswith(pref)])
-        if candidatas:
-            return candidatas[0]
+            pistas = ["z-med-10", "candelaria"]
+    elif num_cll <= 65:
+        if num_cra >= 64 or es_oeste:
+            pistas = ["z-med-11", "laureles"] if num_cra <= 79 else ["z-med-12", "america"]
+        elif num_cra < 42:
+            pistas = ["z-med-08", "villa hermosa"]
+        else:
+            pistas = ["z-med-10", "candelaria"]
+    elif num_cll <= 92:
+        if num_cra >= 64 or es_oeste:
+            pistas = ["z-med-07", "robledo"]
+        elif num_cra < 45:
+            pistas = ["z-med-03", "manrique"]
+        else:
+            pistas = ["z-med-04", "aranjuez"]
+    else:
+        if num_cra >= 64 or es_oeste:
+            pistas = ["z-med-05", "castilla"] if num_cll <= 105 else ["z-med-06", "doce de octubre"]
+        elif num_cra <= 38:
+            pistas = ["z-med-01", "popular"]
+        else:
+            pistas = ["z-med-02", "santa cruz"]
 
+    return _buscar_zona_por_palabras(pistas, mundo, solo_medellin=True)
+
+
+def zona_desde_barrio(barrio_ref, mundo, municipio="Medellín"):
+    """Determina la zona correspondiente al texto escrito en Barrio / Referencia."""
+    if not barrio_ref or not barrio_ref.strip():
+        return None
+    solo_med = _normalizar(municipio) == "medellin"
+    barrio_norm = _normalizar(barrio_ref)
+    for z_id, z_nombre in sorted(mundo.nombre_zona.items()):
+        if solo_med and not str(z_id).upper().startswith("Z-MED"):
+            continue
+        nombre_limpio = _normalizar(re.sub(r"\([^)]*\)", "", z_nombre))
+        tokens = [t for t in re.split(r"[\s\-_/]+", nombre_limpio) if len(t) > 3]
+        if any(t in barrio_norm for t in tokens):
+            return z_id
+    for clave, pistas in BARRIOS_A_SECTOR:
+        if clave in barrio_norm:
+            encontrada = _buscar_zona_por_palabras(pistas, mundo, solo_medellin=solo_med)
+            if encontrada:
+                return encontrada
     return None
 
 
@@ -216,6 +269,18 @@ def badge_urgencia(codigo, texto_extra=""):
         f"{etiqueta}</div>",
         unsafe_allow_html=True,
     )
+
+
+def obtener_factor_trafico_actual(mundo, ts):
+    zonas = list(mundo.nombre_zona.keys())
+    if len(zonas) >= 2:
+        z1, z2 = zonas[0], zonas[1]
+        ts_valle = pd.Timestamp("2026-04-20 03:00")
+        eta_valle = mundo.eta_matriz(z1, z2, ts_valle)
+        eta_ahora = mundo.eta_matriz(z1, z2, ts)
+        if eta_valle > 0:
+            return round(eta_ahora / eta_valle, 2)
+    return 1.0
 
 
 @st.cache_resource
@@ -247,10 +312,34 @@ MOTIVOS_BASE = sorted([m for m in TRIAJE_CATALOGO.keys() if m != "Otro"])
 MOTIVOS = MOTIVOS_BASE + ["Otro"]
 
 
-def iniciar(modo, id_esc, fecha, hora):
+def pedir_recomendacion(sol):
+    motor.actualizar_flota(ss.flota, ss.ahora)
+    ss.sol = sol
+    ss.rec = motor.recomendar(sol, ss.flota, ss.ahora, ss.ts0, mundo, predictor)
+
+
+def sincronizar_reloj_turno():
+    if ss.get("modo_sim") == "Turno nuevo (flota en sus bases)":
+        f_sel = ss.get("fecha_sim", pd.Timestamp("2026-04-20").date())
+        h_sel = ss.get("hora_sim", pd.Timestamp("2026-04-20 08:00").time())
+        ss.ts0 = pd.Timestamp(f"{f_sel} {h_sel}")
+        ss.ahora = 0
+        if ss.get("sol") is not None:
+            pedir_recomendacion(ss.sol)
+
+
+def fijar_hora_rapida(hora_str):
+    nueva_hora = pd.Timestamp(f"2026-04-20 {hora_str}").time()
+    ss["hora_sim"] = nueva_hora
+    sincronizar_reloj_turno()
+
+
+def iniciar(modo, id_esc):
     prog = []
     if modo == "Turno nuevo (flota en sus bases)":
-        ts0 = pd.Timestamp(f"{fecha} {hora}")
+        f_sel = ss.get("fecha_sim", pd.Timestamp("2026-04-20").date())
+        h_sel = ss.get("hora_sim", pd.Timestamp("2026-04-20 08:00").time())
+        ts0 = pd.Timestamp(f"{f_sel} {h_sel}")
         flota = motor.crear_flota_base(mundo)
     else:
         e = esc["escenarios"].set_index("id_escenario").loc[id_esc]
@@ -281,12 +370,8 @@ def iniciar(modo, id_esc, fecha, hora):
 def avanzar(minutos):
     ss.ahora += minutos
     motor.actualizar_flota(ss.flota, ss.ahora)
-
-
-def pedir_recomendacion(sol):
-    motor.actualizar_flota(ss.flota, ss.ahora)
-    ss.sol = sol
-    ss.rec = motor.recomendar(sol, ss.flota, ss.ahora, ss.ts0, mundo, predictor)
+    if ss.get("sol") is not None:
+        pedir_recomendacion(ss.sol)
 
 
 def siguiente_del_escenario():
@@ -318,7 +403,10 @@ def confirmar():
         "Dirección": sol.get("direccion", ""),
         "Motivo": sol.get("motivo", ""),
         "Modificador": sol.get("modificador", "Ninguno"),
-        "Móviles": " + ".join(f"{a['movil']} ({ROL_TEXTO[a['rol']]})" for a in plan["asignaciones"]),
+        "Móviles": " + ".join(
+            f"{a['movil']} ({ROL_TEXTO[a['rol']]} • desde {mundo.nombre_zona.get(a['zona_origen'], a['zona_origen'])})"
+            for a in plan["asignaciones"]
+        ),
         "Llega en (min)": round(min(a["eta_total"] for a in plan["asignaciones"]), 1),
         "Costo estimado": int(sum(a["costo"] for a in plan["asignaciones"])),
     })
@@ -365,35 +453,82 @@ def descartar():
     ss.rec = ss.sol = None
 
 
+# ==========================================
+# BARRA LATERAL OPTIMIZADA Y REACTIVA
+# ==========================================
 st.sidebar.title("AURA")
-st.sidebar.caption("Simulación académica con datos ficticios. Sin conexión a sistemas reales.")
-modo = st.sidebar.radio("Modo", ["Turno nuevo (flota en sus bases)", "Cargar un escenario"])
-id_esc, fecha, hora = None, None, None
+st.sidebar.caption("Simulación académica • Datos 05_zonas_y_tiempos.xlsx")
+
+modo = st.sidebar.radio(
+    "Modo de operación",
+    ["Turno nuevo (flota en sus bases)", "Cargar un escenario"],
+    key="modo_sim",
+)
+
+id_esc = None
 if modo.startswith("Cargar"):
     ids = list(esc["escenarios"].id_escenario)
     nombres = dict(zip(esc["escenarios"].id_escenario, esc["escenarios"].nombre))
-    id_esc = st.sidebar.selectbox("Escenario", ids, format_func=lambda i: f"{i} - {nombres[i]}")
+    id_esc = st.sidebar.selectbox("Escenario de referencia", ids, format_func=lambda i: f"{i} - {nombres[i]}")
+    if st.sidebar.button("Cargar escenario seleccionado", use_container_width=True) or "flota" not in ss:
+        iniciar(modo, id_esc)
 else:
-    fecha = st.sidebar.date_input("Fecha simulada", value=pd.Timestamp("2026-04-20"))
-    hora = st.sidebar.time_input("Hora simulada", value=pd.Timestamp("2026-04-20 08:00"))
-
-if st.sidebar.button("Iniciar / reiniciar simulación") or "flota" not in ss:
-    iniciar(modo, id_esc, fecha, hora)
+    if "flota" not in ss:
+        iniciar(modo, None)
+    f1, f2 = st.sidebar.columns(2)
+    f1.date_input(
+        "Fecha",
+        value=pd.Timestamp("2026-04-20").date(),
+        key="fecha_sim",
+        on_change=sincronizar_reloj_turno,
+    )
+    f2.time_input(
+        "Hora",
+        value=pd.Timestamp("2026-04-20 08:00").time(),
+        key="hora_sim",
+        on_change=sincronizar_reloj_turno,
+    )
+    st.sidebar.caption("Atajos de franja horaria:")
+    h1, h2, h3 = st.sidebar.columns(3)
+    h1.button("Valle 02h", on_click=fijar_hora_rapida, args=("02:00",), use_container_width=True)
+    h2.button("Pico 08h", on_click=fijar_hora_rapida, args=("08:00",), use_container_width=True)
+    h3.button("Pico 18h", on_click=fijar_hora_rapida, args=("18:00",), use_container_width=True)
 
 ahora_ts = ss.ts0 + pd.Timedelta(minutes=ss.ahora)
-st.sidebar.metric("Reloj simulado", ahora_ts.strftime("%d/%m %H:%M"), f"minuto {ss.ahora}")
+factor_trafico = obtener_factor_trafico_actual(mundo, ahora_ts)
+
+if factor_trafico >= 1.25:
+    estado_trafico = f"🔴 Hora Pico ({factor_trafico:.2f}x)"
+elif factor_trafico > 1.05:
+    estado_trafico = f"🟡 Tráfico Medio ({factor_trafico:.2f}x)"
+else:
+    estado_trafico = f"🟢 Hora Valle ({factor_trafico:.2f}x)"
+
+st.sidebar.divider()
+st.sidebar.metric(
+    "Reloj activo del sistema",
+    ahora_ts.strftime("%d/%m %H:%M"),
+    f"{estado_trafico} • +{ss.ahora} min",
+)
+
 c1, c2, c3 = st.sidebar.columns(3)
-c1.button("+5 min", on_click=avanzar, args=(5,))
-c2.button("+15 min", on_click=avanzar, args=(15,))
-c3.button("+30 min", on_click=avanzar, args=(30,))
+c1.button("+5 min", on_click=avanzar, args=(5,), use_container_width=True)
+c2.button("+15 min", on_click=avanzar, args=(15,), use_container_width=True)
+c3.button("+30 min", on_click=avanzar, args=(30,), use_container_width=True)
+
+if modo == "Turno nuevo (flota en sus bases)":
+    if st.sidebar.button("🔄 Reiniciar turno y flota", use_container_width=True):
+        iniciar(modo, None)
 
 if ss.prog:
     sig = ss.prog[0]
     st.sidebar.button(
-        f"Siguiente solicitud del escenario ({sig['id']}, min {sig['llegada']})",
+        f"▶️ Siguiente solicitud ({sig['id']}, min {sig['llegada']})",
         on_click=siguiente_del_escenario,
+        use_container_width=True,
     )
 
+st.sidebar.divider()
 st.sidebar.subheader(f"Cola de espera ({len(ss.cola)})")
 for s in sorted(ss.cola, key=lambda s: (PRIORIDAD[s["clase"]], s["llegada"])):
     ico = MANCHESTER[s["clase"]]["emoji"]
@@ -402,8 +537,11 @@ for s in sorted(ss.cola, key=lambda s: (PRIORIDAD[s["clase"]], s["llegada"])):
         f"({s.get('paciente', 'Sin nombre')})"
     )
 if ss.cola:
-    st.sidebar.button("Reintentar la cola", on_click=reintentar_cola)
+    st.sidebar.button("Reintentar la cola", on_click=reintentar_cola, use_container_width=True)
 
+# ==========================================
+# CUERPO PRINCIPAL
+# ==========================================
 st.title("AURA — Asignación inteligente de móviles")
 tab1, tab2, tab3, tab4 = st.tabs(["Despacho", "Flota y Reclasificación", "Historial", "Resultados"])
 
@@ -411,7 +549,7 @@ with tab1:
     if ss.mensaje:
         st.success(ss.mensaje)
 
-    st.markdown("**1. Datos del afiliado y ubicación exacta**")
+    st.markdown("**1. Datos del afiliado**")
     u1, u2, u3, u4, u5 = st.columns([2, 1.1, 1.1, 0.8, 0.9])
     paciente = u1.text_input("Nombre completo del paciente", placeholder="Ej: Ana María Gómez")
     documento = u2.text_input("Documento / ID", placeholder="Ej: CC 43.512.890")
@@ -419,29 +557,107 @@ with tab1:
     edad = u4.number_input("Edad (años)", min_value=0, max_value=115, value=35, step=1)
     canal = u5.selectbox("Canal", CANALES)
 
-    d1, d2 = st.columns([2.6, 1.4])
-    direccion = d1.text_input(
-        "Dirección exacta y punto de referencia (detecta zona automáticamente)",
-        placeholder="Ej: Cra 43A # 14-25, El Poblado, Apto 402 (presione Enter tras escribir)",
+    st.markdown("**2. Ubicación exacta (Nomenclatura vial oficial + Validación de barrio)**")
+
+    # Bloque 1: Vía Principal
+    st.caption("Bloque 1 — Vía Principal (ej. Carrera 30A Bis Sur)")
+    vp0, vp1, vp2, vp3, vp4, vp5, vp6 = st.columns([1.2, 1.1, 0.8, 0.75, 0.55, 0.75, 0.95])
+    municipio = vp0.selectbox("Municipio", MUNICIPIOS, index=0)
+    tipo_via = vp1.selectbox("Tipo de Vía", TIPOS_VIA, index=0)
+    num_via = vp2.number_input("N° Vía", min_value=0, max_value=300, value=0, step=1)
+    letra_via = vp3.selectbox("Letra Vía", LETRAS_VIA, index=0)
+    bis_via = vp4.checkbox("Bis", value=False, key="bis_via")
+    letra_bis_via = vp5.selectbox("Letra Bis", LETRAS_BIS, index=0, disabled=not bis_via, key="l_bis_via")
+    cuad_via = vp6.selectbox("Cuadrante Vía", CUADRANTES, index=0)
+
+    # Bloque 2: Cruce (Vía Generadora)
+    st.caption("Bloque 2 — Cruce / Vía Generadora (ej. # 34B Bis Sur - 50)")
+    vc1, vc2, vc3, vc4, vc5, vc6 = st.columns([0.9, 0.8, 0.65, 0.85, 0.9, 1.0])
+    num_cruce = vc1.number_input("N° Cruce (#)", min_value=0, max_value=300, value=0, step=1)
+    letra_cruce = vc2.selectbox("Letra Cruce", LETRAS_VIA, index=0, key="l_cruce")
+    bis_cruce = vc3.checkbox("Bis Cruce", value=False, key="bis_cruce")
+    letra_bis_cruce = vc4.selectbox("Letra Bis Cr.", LETRAS_BIS, index=0, disabled=not bis_cruce, key="l_bis_cruce")
+    placa = vc5.text_input("Placa (-)", placeholder="Ej: 50")
+    cuad_cruce = vc6.selectbox("Cuadrante Cruce", CUADRANTES, index=0)
+
+    # Bloque 3: Barrio / Punto de referencia y Zona resultante
+    b1_dir, b2_dir = st.columns([1.8, 2.2])
+    barrio_ref = b1_dir.text_input(
+        "Barrio / Urbanización / Punto de referencia",
+        placeholder="Ej: El Poblado, Apto 302, frente al parque...",
     )
 
-    zona_detectada = detectar_zona_desde_direccion(direccion, mundo)
-    idx_zona = None
+    zona_vial = zona_desde_coordenada_vial(
+        municipio, tipo_via, num_via, num_cruce, cuad_via, cuad_cruce, mundo
+    )
+    zona_barrio = zona_desde_barrio(barrio_ref, mundo, municipio=municipio)
+
+    # Prioridad: la coordenada vial manda si está completa; si no, usa el barrio escrito
+    zona_detectada = zona_vial or zona_barrio
+    idx_zona_auto = None
     if zona_detectada and zona_detectada in mundo.nombre_zona:
         nombre_det = mundo.nombre_zona[zona_detectada]
         if nombre_det in OPCIONES_ZONA:
-            idx_zona = OPCIONES_ZONA.index(nombre_det)
+            idx_zona_auto = OPCIONES_ZONA.index(nombre_det)
 
-    zona_txt = d2.selectbox(
-        "Zona / Comuna (automática o búsqueda manual)",
-        options=OPCIONES_ZONA,
-        index=idx_zona,
-        placeholder="Se completa con la dirección o escriba para buscar...",
+    clave_zona_widget = (
+        f"zona_{municipio}_{tipo_via}_{num_via}_{letra_via}_{bis_via}_{letra_bis_via}_{cuad_via}_"
+        f"{num_cruce}_{letra_cruce}_{bis_cruce}_{letra_bis_cruce}_{cuad_cruce}_{barrio_ref}"
     )
-    if zona_detectada and direccion.strip():
-        st.caption(f"📍 Zona detectada automáticamente: **{mundo.nombre_zona[zona_detectada]}**")
+    zona_txt = b2_dir.selectbox(
+        "Zona / Comuna asignada automáticamente (editable)",
+        options=OPCIONES_ZONA,
+        index=idx_zona_auto,
+        key=clave_zona_widget,
+        placeholder="Complete la nomenclatura o seleccione manualmente...",
+    )
 
-    st.markdown("**2. Triaje automático (sin conocimientos médicos)**")
+    # Alerta de coherencia si el barrio escrito no corresponde a la dirección vial
+    if zona_vial and zona_barrio and zona_vial != zona_barrio:
+        st.warning(
+            f"⚠️ **Inconsistencia entre nomenclatura y barrio:** La dirección vial corresponde a "
+            f"**{mundo.nombre_zona[zona_vial]}**, mientras que el barrio escrito pertenece a "
+            f"**{mundo.nombre_zona[zona_barrio]}**. Se priorizó la ubicación vial."
+        )
+    elif zona_vial and zona_txt and TEXTO_A_ZONA.get(zona_txt) != zona_vial:
+        st.warning(
+            f"⚠️ **Verifica la zona seleccionada:** La nomenclatura vial corresponde a "
+            f"**{mundo.nombre_zona[zona_vial]}**, pero seleccionaste **{zona_txt}**."
+        )
+
+    # Armar cadena estandarizada completa de la dirección
+    partes_via = [tipo_via]
+    if num_via > 0:
+        num_via_str = f"{num_via}{letra_via}"
+        if bis_via:
+            num_via_str += f" Bis{(' ' + letra_bis_via) if letra_bis_via else ''}"
+        if cuad_via != "Ninguno":
+            num_via_str += f" {cuad_via}"
+        partes_via.append(num_via_str)
+
+    partes_cruce = []
+    if num_cruce > 0:
+        num_cruce_str = f"{num_cruce}{letra_cruce}"
+        if bis_cruce:
+            num_cruce_str += f" Bis{(' ' + letra_bis_cruce) if letra_bis_cruce else ''}"
+        if placa.strip():
+            num_cruce_str += f"-{placa.strip()}"
+        if cuad_cruce != "Ninguno":
+            num_cruce_str += f" {cuad_cruce}"
+        partes_cruce.append(f"# {num_cruce_str}")
+
+    ref_txt = f" ({barrio_ref.strip()})" if barrio_ref.strip() else ""
+    if num_via > 0 and num_cruce > 0:
+        direccion_armada = f"{' '.join(partes_via)} {' '.join(partes_cruce)}, {municipio}{ref_txt}"
+    elif barrio_ref.strip():
+        direccion_armada = f"{barrio_ref.strip()}, {municipio}"
+    else:
+        direccion_armada = ""
+
+    if direccion_armada and zona_txt:
+        st.caption(f"📍 **Dirección estandarizada:** {direccion_armada}  |  **Zona:** {zona_txt}")
+
+    st.markdown("**3. Triaje automático (sin conocimientos médicos)**")
     t1, t2 = st.columns([3, 1])
     motivo = t1.selectbox(
         "Motivo de consulta (escriba síntoma o consulta banal, o elija 'Otro')",
@@ -480,11 +696,11 @@ with tab1:
     enviar = st.button("Obtener recomendación", type="primary")
     if enviar:
         if not zona_txt or not motivo:
-            st.warning("Por favor seleccione o verifique la **Zona del paciente** y el **Motivo de consulta**.")
+            st.warning("Por favor complete la **Nomenclatura / Zona** y el **Motivo de consulta**.")
         elif motivo == "Otro" and not motivo_otro.strip():
             st.warning("Por favor escriba la descripción de lo que le ocurre al paciente.")
-        elif not direccion.strip():
-            st.warning("Ingrese la **Dirección exacta** para el despacho de la tripulación.")
+        elif not direccion_armada:
+            st.warning("Ingrese el **N° Vía y N° Cruce** (o el barrio/referencia) para generar la dirección exacta.")
         else:
             motivo_final = f"Otro: {motivo_otro.strip()}" if motivo == "Otro" else motivo
             sol = {
@@ -496,7 +712,7 @@ with tab1:
                 "paciente": paciente.strip() or "No reportado",
                 "documento": documento.strip() or "No reportado",
                 "telefono": telefono.strip() or "No reportado",
-                "direccion": direccion.strip(),
+                "direccion": direccion_armada,
                 "canal": canal,
                 "modificador": mod_auto,
                 "llegada": ss.ahora,
@@ -510,13 +726,24 @@ with tab1:
         st.divider()
         badge_urgencia(
             sol["clase"],
-            texto_extra=f"Solicitud {sol['id']} — {mundo.nombre_zona[sol['zona']]}",
+            texto_extra=f"Solicitud {sol['id']} — {mundo.nombre_zona[sol['zona']]} ({estado_trafico})",
         )
         st.caption(
             f"**Paciente:** {sol.get('paciente', 'N/A')} ({sol.get('documento', 'N/A')}) | "
             f"**Tel:** {sol.get('telefono', 'N/A')} | **Dirección:** {sol.get('direccion', 'N/A')} | "
             f"**Motivo:** {sol.get('motivo', '')} | **Modificador:** {sol.get('modificador', 'Ninguno')}"
         )
+
+        if plan["asignaciones"]:
+            flota_por_id = {m["id"]: m for m in ss.flota}
+            for x in plan["asignaciones"]:
+                m_info = flota_por_id.get(x["movil"], {})
+                zona_nombre_origen = mundo.nombre_zona.get(x["zona_origen"], x["zona_origen"])
+                estado_actual_mov = m_info.get("estado", "DISPONIBLE")
+                st.success(
+                    f"🚑 **Ubicación actual de {x['movil']} ({x['tipo']}):** "
+                    f"**{zona_nombre_origen}** (Estado: `{estado_actual_mov}` • Distancia: `{x['dist_km']:.1f} km`)"
+                )
 
         if sol["clase"] == "06":
             st.info(
@@ -528,8 +755,8 @@ with tab1:
         origen_zona_nombre = mundo.nombre_zona.get(
             plan["asignaciones"][0]["zona_origen"], "Medellín"
         ) if plan["asignaciones"] else "Medellín"
-        dir_destino_url = urllib.parse.quote(f"{sol['direccion']}, Medellín, Antioquia")
-        dir_origen_url = urllib.parse.quote(f"{origen_zona_nombre}, Medellín, Antioquia")
+        dir_destino_url = urllib.parse.quote(f"{sol['direccion']}, Antioquia")
+        dir_origen_url = urllib.parse.quote(f"{origen_zona_nombre}, Antioquia")
         url_gmaps = f"https://www.google.com/maps/dir/?api=1&origin={dir_origen_url}&destination={dir_destino_url}&travelmode=driving"
         st.markdown(f"🗺️ [Ver ruta con tráfico en vivo en Google Maps]({url_gmaps})")
 
@@ -542,7 +769,12 @@ with tab1:
         else:
             cols = st.columns(len(plan["asignaciones"]))
             for col, x in zip(cols, plan["asignaciones"]):
-                col.metric(f"{x['movil']} {x['tipo']}", f"{x['eta_total']:.0f} min", ROL_TEXTO[x["rol"]])
+                zona_corto = mundo.nombre_zona.get(x["zona_origen"], x["zona_origen"]).split("(")[0].strip()
+                col.metric(
+                    f"{x['movil']} ({x['tipo']}) — {ROL_TEXTO[x['rol']]}",
+                    f"{x['eta_total']:.1f} min",
+                    f"📍 Desde: {zona_corto}",
+                )
             st.info(plan["explicacion"])
             for adv in plan["advertencias"]:
                 st.warning(adv)
@@ -553,8 +785,10 @@ with tab1:
                     {
                         "Móvil": o["movil"],
                         "Tipo": o["tipo"],
+                        "Ubicación actual": mundo.nombre_zona.get(o["zona_origen"], o["zona_origen"]),
                         "Opción": o["tipo_opcion"],
                         "Llega en (min)": round(o["eta_total"], 1),
+                        "Distancia (km)": round(o["dist_km"], 1),
                         "Costo (COP)": int(o["costo"]),
                         "Servicios recientes": o["carga"],
                         "Zonas altas descubiertas": o["zonas_descubiertas"],
